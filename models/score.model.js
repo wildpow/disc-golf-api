@@ -7,8 +7,7 @@ const scoreSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: "User" },
   score: Number,
   hole: Number,
-  course: { type: Schema.Types.ObjectId, ref: "Course" },
-  time: Date()
+  course: { type: Schema.Types.ObjectId, ref: "Course" }
 });
 
 const Score = mongoose.model("Score", scoreSchema);

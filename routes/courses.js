@@ -2,14 +2,14 @@ const router = require("express").Router();
 const Course = require("../models/course.model");
 
 router.route("/").get((req, res) => {
-  User.find()
+  Course.find()
     .then(course => res.json(course))
     .catch(err => res.status(400).json("Error: + err"));
 });
 
 router.route("/:id").get((req, res) => {
   Course.findById(req.params.id)
-    .then(user => res.json(user))
+    .then(course => res.json(course))
     .catch(err => res.status(400).json("Error: " + err));
 });
 
@@ -18,7 +18,7 @@ router.route("/add").post((req, res) => {
   const holeCount = req.body.holeCount;
   const holes = req.body.holes;
 
-  const newCourse = new User({
+  const newCourse = new Course({
     name,
     holeCount,
     holes

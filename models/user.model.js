@@ -7,7 +7,7 @@ const userShema = new Schema({
     type: String,
     trim: true,
     required: true,
-    unique: true,
+    // unique: true,
     lowercase: true
   },
   games: [{ type: Schema.Types.ObjectId, ref: "Game" }]

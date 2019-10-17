@@ -16,18 +16,19 @@ router.route("/:id").get((req, res) => {
 router.route("/add").post((req, res) => {
   const users = req.body.users;
   const course = req.body.course;
-  const newGame = new Game({
-    users,
-    course
+  const newGame = new Games({
+    course,
+    users
   });
   newGame
+    .populate("users")
     .save()
     .then(() => res.json("Game added!"))
     .catch(err => res.status(400).json("Error: " + err));
 });
 
 router.route("/:id").delete((req, res) => {
-  Game.findByIdAndDelete(req.params.id)
+  Games.findByIdAndDelete(req.params.id)
     .then(() => res.json("Game deleted."))
     .catch(err => res.status(400).json("Error: " + err));
 });

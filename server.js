@@ -26,7 +26,7 @@ const userRouter = require("./routes/users");
 const courseRouter = require("./routes/courses");
 const gameRouter = require("./routes/games");
 
-app.use("/users", userRouter);
+app.use("/user", userRouter);
 app.use("/course", courseRouter);
 app.use("/game", gameRouter);
 
