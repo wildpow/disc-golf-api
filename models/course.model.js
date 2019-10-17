@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
+const holeSchema = new Schema({
+  pare: Number,
+  number: Number
+});
+
 const courseSchema = new Schema({
   name: {
     type: String,
@@ -10,11 +15,6 @@ const courseSchema = new Schema({
   },
   holeCount: Number,
   holes: [holeSchema]
-});
-
-const holeSchema = new Schema({
-  pare: Number,
-  number: Number
 });
 
 const Course = mongoose.model("Course", courseSchema);
