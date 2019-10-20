@@ -13,6 +13,7 @@ router.route("/:id").get((req, res) => {
     .catch(err => res.status(400).json("Error: " + err));
 });
 
+// NOT WORKING!!!!!!!!!!!
 router.route("/add").post((req, res) => {
   const users = req.body.users;
   const course = req.body.course;
@@ -21,11 +22,11 @@ router.route("/add").post((req, res) => {
     users
   });
   newGame
-    .populate("users")
     .save()
     .then(() => res.json("Game added!"))
     .catch(err => res.status(400).json("Error: " + err));
 });
+//////////////////////////////////////////////////////////
 
 router.route("/:id").delete((req, res) => {
   Games.findByIdAndDelete(req.params.id)
