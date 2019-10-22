@@ -8,8 +8,7 @@ const gameSchema = new Schema({
   scores: [{ type: Schema.Types.ObjectId, ref: "Score" }],
   finished: Boolean,
   startDate: Date,
-  endDate: Date,
-  _id: Schema.Types.ObjectId
+  endDate: Date
 });
 
 const Game = mongoose.model("Game", gameSchema);

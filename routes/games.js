@@ -1,11 +1,13 @@
 const router = require("express").Router();
 const Games = require("../models/game.model");
-const mongoose = require("mongoose");
 
 router.route("/").get((req, res) => {
   Games.find()
+    .populate("users")
+    .populate("course")
+    .exec()
     .then(games => res.json(games))
-    .catch(err => res.status(400).json("Error: + err"));
+    .catch(err => res.status(400).json("Error: " + err));
 });
 
 router.route("/:id").get((req, res) => {
@@ -13,15 +15,18 @@ router.route("/:id").get((req, res) => {
     .then(game => res.json(game))
     .catch(err => res.status(400).json("Error: " + err));
 });
-
+router.route("/user/:id").get((req, res) => {
+  Games.find({ users: req.params.id })
+    .then(game => res.json(game))
+    .catch(err => res.status(400).json("Error: " + err));
+});
 // NOT WORKING!!!!!!!!!!!
 router.route("/add").post((req, res) => {
   const users = req.body.users;
   const course = req.body.course;
   const newGame = new Games({
     course,
-    users,
-    _id: new mongoose.Types.ObjectId()
+    users
   });
   newGame
     .save()

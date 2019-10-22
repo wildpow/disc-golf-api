@@ -9,9 +9,8 @@ const userShema = new Schema({
     required: true,
     unique: true,
     lowercase: true
-  },
-  _id: Schema.Types.ObjectId,
-  games: [{ type: Schema.Types.ObjectId, ref: "Game" }]
+  }
+  // games: [{ type: Schema.Types.ObjectId, ref: "Game" }]
 });
 
 const User = mongoose.model("User", userShema);
