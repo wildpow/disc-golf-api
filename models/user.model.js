@@ -7,9 +7,10 @@ const userShema = new Schema({
     type: String,
     trim: true,
     required: true,
-    // unique: true,
+    unique: true,
     lowercase: true
   },
+  _id: Schema.Types.ObjectId,
   games: [{ type: Schema.Types.ObjectId, ref: "Game" }]
 });
 

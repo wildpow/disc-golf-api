@@ -1,5 +1,6 @@
 const router = require("express").Router();
-const Games = require("../models/user.model");
+const Games = require("../models/game.model");
+const mongoose = require("mongoose");
 
 router.route("/").get((req, res) => {
   Games.find()
@@ -19,11 +20,12 @@ router.route("/add").post((req, res) => {
   const course = req.body.course;
   const newGame = new Games({
     course,
-    users
+    users,
+    _id: new mongoose.Types.ObjectId()
   });
   newGame
     .save()
-    .then(() => res.json("Game added!"))
+    .then(() => res.json("game added!"))
     .catch(err => res.status(400).json("Error: " + err));
 });
 //////////////////////////////////////////////////////////
