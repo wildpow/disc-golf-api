@@ -11,6 +11,9 @@ var https = require("https");
 //   });
 // }
 
+// Took me awhile to figure this out just to find out I don't need this route
+// to wake up Heroku on the client just any route. I'll keep this code around to
+// admire it a little more
 function herokuWakeUp() {
   return new Promise(resolve => {
     https.get("https://aw-disc-golf.herokuapp.com/", res => {

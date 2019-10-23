@@ -53,7 +53,9 @@ connection.once("open", () => {
 const userRouter = require("./routes/users");
 const courseRouter = require("./routes/courses");
 const gameRouter = require("./routes/games");
-const wakeUpRouter = require("./routes/wakeUp");
+// Made this route to wake up Heroku but, since the client is already hitting a
+// Heroku end point I just directed it to courses so I can start pre-loading data
+const wakeUpRouter = require("./routes/wakeUp"); // not needed
 
 app.use("/", wakeUpRouter);
 app.use("/user", userRouter);
